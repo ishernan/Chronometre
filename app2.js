@@ -21,17 +21,15 @@ function init() {
   timeStart;
 }
 
-function changeValue(value, i){
-  value[i]++
-  if(value[i]==maxDefault){
+function changeValue(v, i, max){
+  v[i]++
+  if(v[i]==max){
     i++
-    if(value.lenght>i){
-      changeValue(value, i);
+    if(v.lenght>i){
+      changeValue(v, i);
     }    
   }
 }
-
-
 
 function chronometre () {   
  timeStart = setInterval(() => {    
@@ -39,11 +37,10 @@ function chronometre () {
     milisecondes.innerHTML = mls; 
 
     if(mls > 9){
-      changeValue(tab, 0);      
+      changeValue(tab, 0, maxDefault);      
       secondes.innerHTML = s;
     }
-
-   
+ 
     
   }, 100);
 };   
