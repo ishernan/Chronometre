@@ -16,8 +16,7 @@ let timeStart;
 function chronometre () {   
 
 
- timeStart = setInterval(() => {
-    
+ timeStart = setInterval(() => {    
     mls++; 
     milisecondes.innerHTML = '0' + mls; 
 
@@ -30,7 +29,7 @@ function chronometre () {
     if (s > 59){
       s = 0;
       m ++;
-      minutes.innerHTML = '0'+m;
+      minutes.innerHTML = m;
     }         
     if (m > 59) {
       m = 0;
@@ -40,8 +39,7 @@ function chronometre () {
     if (h> 24){
       h = 0;
     }
-  
-  
+    
   }, 100);
 };   
 
