@@ -4,30 +4,30 @@ const minutes  = document.querySelector('#minutes') ;
 const secondes = document.querySelector('#secondes'); 
 const button   = document.querySelector('#button');
 const button2  = document.querySelector('#button2');
+const reset    = document.querySelector('#reset');
 
+let ms = 0
+let s  = 0
+let m  = 0
+let h  = 0
 let time;
 
-
-
- function chronometre () { 
-  let sec = 0
-  let min = 0
-  let heur = 0
-
+function chronometre () { 
+  
   time = setInterval(() => {
-    if (sec == 60){
-      sec = 0;
-      min ++;
+    if (s == 60){
+      s = 0;
+      m ++;
       minutes.textContent = min;
          
-    } else if (min == 60) {
-      min = 0;
-      heur++;
-      heures.textContent = heur; 
+    } else if (m == 60) {
+      m = 0;
+      h++;
+      heures.textContent = h; 
     }   
-  secondes.textContent = sec;
-    sec++;  
-  }, 10);
+  secondes.textContent = s;
+    s++;  
+  }, 100);
 };   
 
 
@@ -44,3 +44,6 @@ button2.addEventListener('click', ()=>{
 })
   
  
+reset.addEventListener('click', ()=>{
+  location.reload();
+})
