@@ -1,3 +1,4 @@
+//AUTRE VARIANTE
 
 const milisecondes = document.querySelector('#milisecondes');
 const heures       = document.querySelector('#heures'); 
@@ -6,42 +7,47 @@ const secondes     = document.querySelector('#secondes');
 const button       = document.querySelector('#button');
 const button2      = document.querySelector('#button2');
 const reset        = document.querySelector('#reset');
+const maxDefault   = 60; 
 
-let mls = 00;
-let s   = 00;
-let m   = 00;
-let h   = 00;
-let timeStart;
+let mls,s,m,h,timeStart; 
+let tab = []
+
+function init() { 
+  mls = 00;
+  s   = 00;
+  m   = 00;
+  h   = 00;
+  tab = [s,m,h]
+  timeStart;
+}
+
+function changeValue(value, i){
+  value[i]++
+  if(value[i]==maxDefault){
+    i++
+    if(value.lenght>i){
+      changeValue(value, i);
+    }    
+  }
+}
+
+
 
 function chronometre () {   
-
-
  timeStart = setInterval(() => {    
     mls++; 
-    milisecondes.innerHTML = '0' + mls; 
+    milisecondes.innerHTML = mls; 
 
     if(mls > 9){
-      s++;
-      mls = 0;      
+      changeValue(tab, 0);      
       secondes.innerHTML = s;
     }
 
-    if (s > 59){
-      s = 0;
-      m ++;
-      minutes.innerHTML = m;
-    }         
-    if (m > 59) {
-      m = 0;
-      h++;
-      heures.innerHTML = h; 
-    }   
-    if (h> 24){
-      h = 0;
-    }
+   
     
   }, 100);
 };   
+
 
 
 button.addEventListener('click', ()=>{
