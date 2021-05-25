@@ -1,35 +1,46 @@
 
-const heures   = document.querySelector('#heures'); 
-const minutes  = document.querySelector('#minutes') ;
-const secondes = document.querySelector('#secondes'); 
-const button   = document.querySelector('#button');
-const button2  = document.querySelector('#button2');
-const reset    = document.querySelector('#reset');
+const milisecondes = document.querySelector('#milisecondes');
+const heures       = document.querySelector('#heures'); 
+const minutes      = document.querySelector('#minutes') ;
+const secondes     = document.querySelector('#secondes'); 
+const button       = document.querySelector('#button');
+const button2      = document.querySelector('#button2');
+const reset        = document.querySelector('#reset');
 
-let ms = 0
+let mls = 0
 let s  = 0
 let m  = 0
 let h  = 0
-let time;
+let timeStart;
 
-function chronometre () { 
-  
-  time = setInterval(() => {
-    if (s == 60){
+function chronometre () {   
+  timeStart = setInterval(() => {
+    
+   
+
+    if(mls > 9){
+      s++;
+      msl = 0;      
+      secondes.innerHTML = s;
+    }
+    if (s > 59){
       s = 0;
       m ++;
-      minutes.textContent = min;
-         
-    } else if (m == 60) {
+      minutes.textContent = m;
+    }         
+    if (m > 59) {
       m = 0;
       h++;
       heures.textContent = h; 
     }   
-  secondes.textContent = s;
-    s++;  
-  }, 100);
+    if (h> 24){
+      h = 0;
+    }
+  
+    mls++; 
+    milisecondes.textContent = mls; 
+  }, 1000);
 };   
-
 
 button.addEventListener('click', ()=>{
   button.classList.add("d-none");
@@ -38,7 +49,7 @@ button.addEventListener('click', ()=>{
 }); 
 
 button2.addEventListener('click', ()=>{
-  clearInterval(time);
+  clearInterval(timeStart);
   button.classList.remove("d-none");
   button2.classList.add("d-none");
 })
